@@ -13,9 +13,20 @@ export default function DetailTambahan({ current, daily }) {
       ket: kategori.teks,
       warna: kategori.warna,
     },
-    { label: "Matahari terbit", nilai: jam(daily.sunrise[0]), ket: "WIB/waktu setempat" },
-    { label: "Matahari terbenam", nilai: jam(daily.sunset[0]), ket: "WIB/waktu setempat" },
-    { label: "Tekanan udara", nilai: `${Math.round(current.pressure_msl)} hPa` },
+    {
+      label: "Matahari terbit",
+      nilai: jam(daily.sunrise[0]),
+      ket: "waktu setempat",
+    },
+    {
+      label: "Matahari terbenam",
+      nilai: jam(daily.sunset[0]),
+      ket: "waktu setempat",
+    },
+    {
+      label: "Tekanan udara",
+      nilai: `${Math.round(current.pressure_msl)} hPa`,
+    },
     { label: "Tutupan awan", nilai: `${current.cloud_cover}%` },
   ];
 
@@ -28,7 +39,10 @@ export default function DetailTambahan({ current, daily }) {
             <span className="d-label">{d.label}</span>
             <span className="d-nilai">{d.nilai}</span>
             {d.ket && (
-              <span className="d-ket" style={d.warna ? { color: d.warna } : undefined}>
+              <span
+                className="d-ket"
+                style={d.warna ? { color: d.warna } : undefined}
+              >
                 {d.ket}
               </span>
             )}

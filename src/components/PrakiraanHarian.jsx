@@ -1,4 +1,5 @@
 import { artiKodeCuaca } from "../utils/kodeCuaca";
+import { konversi } from "../utils/satuan";
 
 function namaHari(tanggal, indeks) {
   if (indeks === 0) return "Hari ini";
@@ -7,7 +8,7 @@ function namaHari(tanggal, indeks) {
   });
 }
 
-export default function PrakiraanHarian({ data }) {
+export default function PrakiraanHarian({ data, satuan }) {
   return (
     <div className="kartu lebar">
       <h3>7 hari ke depan</h3>
@@ -22,8 +23,12 @@ export default function PrakiraanHarian({ data }) {
               </span>
               <span className="hujan">💧 {h.hujan ?? 0}%</span>
               <span className="rentang">
-                <span className="min">{h.min}°</span>
-                <span className="maks">{h.maks}°</span>
+                <span className="min">
+                  {Math.round(konversi(h.min, satuan))}°
+                </span>
+                <span className="maks">
+                  {Math.round(konversi(h.maks, satuan))}°
+                </span>
               </span>
             </li>
           );
